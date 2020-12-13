@@ -1,19 +1,27 @@
 const express = require('express');
 const router = express.Router();
 
-const sampleJSON = [
-    {
-        name: "Mik",
-        role: "friend",
-        pet: "dog",
-    },
-    {
-        name: "yo",
-        role: "hate",
-        pet: "ugh",
-    },
-];
+// Require Firebase
+const firebase = require("firebase");
+const db = firebase.firestore();
+const listings = db.collection('listings');
 
-router.get("/", (req, res) => res.send(sampleJSON));
+
+
+router.get("/all-listings", (req, res) => {
+    const listingsArray = [];
+    listings
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                listingsArray.push(doc.data());
+            });
+            return res.send(listingsArray);
+        })
+        .catch(function (error) {
+            console.log("Error:", error);
+            return res.send(error);
+        });
+});
 
 module.exports = router;

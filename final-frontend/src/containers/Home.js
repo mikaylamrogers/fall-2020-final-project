@@ -21,8 +21,8 @@ function Home() {
     console.log({sampleAPIData});
 
     return (
-        <div>
-            <h1>All Listings</h1>
+        <div className="ListingBox">
+            <h1>all listings</h1>
             {sampleAPIData.map((listing, i) => (
                 <ListingCard listingData={listing} key={i}  />
             ))}

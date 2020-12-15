@@ -1,28 +1,27 @@
+body {
+  background-color: #EBDDAE;
+}
+
 .App {
   max-width: 1080px;
   margin: 0 auto;
   padding: 10px 20px;
 }
 
-.Header nav {
-  display: flex;
-  justify-content: flex-end;
-  max-width: 1040px;
-  margin: 0 auto;
-}
-
 .Header nav a {
+  display: flex;
   color: black;
-  cursor: pointer;
   font-size: 20px;
   font-weight: bold;
-  display: block;
-  margin: 10px;
-  text-decoration: underline;
+  margin: 5px;
+  text-decoration: none;
+  text-align: left;
+  margin-left: 0;
 }
 
-.Header nav a:hover {
-  color: green;
+.SiteTitles {
+  text-align: center;
+  margin-top: 15vh;;
 }
 
 .SignupForm {
@@ -31,12 +30,106 @@
   max-width: 400px;
 }
 
-.Loginform label {
-  margin-bottom: 5px;
-}
-
 .SignupForm input, .SignupForm button {
+  text-align: center;
   margin-bottom: 30px;
   max-width: 400px;
   width: 100%;
 }
+
+button {
+  border: 0px;
+  border-radius: 8px;
+  width: 17%;
+  padding: 16px;
+  color: #EBDDAE;
+  background-color: black;
+}
+
+button:hover {
+  background-color: #d1c394;
+}
+
+/* UPLOAD PHOTO */
+.upload {
+  text-align: center;
+  width: 30%;
+  border: 1px solid black;
+  padding: 5%;
+}
+
+.upload:hover, .ListingCard:hover, .OtherNav:hover {
+  background-color: #d1c394;
+}
+
+.Listing {
+  text-align: center;
+}
+
+form {
+  display: block;
+  margin-left: auto;
+  margin-right: auto
+}
+
+input[type=text], select {
+  width: 40%;
+  padding: 10px 0;
+  margin-left: 30%;
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+div.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.ListingCard {
+  display: inline-block;
+  margin: 2vh;
+  width: 20%;
+  border: 1px solid black;
+  padding: 5%;
+}
+
+.Title {
+  font-weight: bold;;
+}
+
+.Plus {
+  font-size: 35px;
+  font-weight: 990;
+  text-decoration: none;
+}
+
+.OtherNav {
+  width: 11%;
+  /* background-color: black; */
+  color: black;
+  border-bottom: 1px solid black;
+  padding: 0.5%;
+}
+
+a {
+  color: black;
+}
+
+h4 {
+  padding: 0px;
+}
+
+

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Route, BrowserRouter as Router, Redirect } from "react-router-dom";
 import firebase from "firebase/app";
@@ -8,6 +8,8 @@ import "firebase/auth";
 import CreateAccount from './containers/CreateAccount';
 import Home from './containers/Home';
 import Login from './containers/Login';
+import CreateListing from "./containers/CreateListing";
+import UserProfile from './containers/UserProfile';
 
 // Components
 import Header from './components/Header';
@@ -65,7 +67,7 @@ function App() {
         setLoggedIn(true);
       })
       .catch(function (error) {
-        console.log("LOGIN ERROR", error);
+        window.alert("there's no reason to hack, everything's free SMH", error);
       });
   }
 
@@ -106,7 +108,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header loggedIn={loggedIn} LogoutFunction={LogoutFunction} />
+      <Header loggedIn={loggedIn} LogoutFunction={LogoutFunction} userAuthInfo={userAuthInfo}  />
         <Router>
 
           <Route exact path="/login">
@@ -131,6 +133,22 @@ function App() {
             )}
           </Route>
 
+          <Route exact path="/create-listing">
+            {!loggedIn ? (
+              <Redirect to="/login" />
+            ) : (
+              <CreateListing userAuthInfo={userAuthInfo} />
+            )}
+          </Route>
+
+          <Route exact path="/profile/:id">
+            {!loggedIn ? (
+              <Redirect to="/login"  />
+            ) : (
+              <UserProfile  /> 
+            )}  
+          </Route>
+
           <Route exact path="/">
             {/* if someone is not logged in, do not take them to user profile page 
             - take them to login */}
@@ -138,7 +156,7 @@ function App() {
             {!loggedIn ? (
               <Redirect to="/login"  />
             ) : (
-              <Home userAuthInfo={userAuthInfo} />
+              <Home userAuthInfo={userAuthInfo} /> 
             )}  
           </Route>
           

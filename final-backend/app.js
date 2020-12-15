@@ -19,6 +19,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const indexRoute = require("./routes/index.js");
+const createListing = require("./routes/createListing.js");
+
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
@@ -29,5 +31,8 @@ app.use(function (req, res, next) {
   next();
 });
 
+// Routes
 app.use("/", indexRoute);
+app.use("/create", createListing);
+
 app.listen(port, () => console.log(`Backend is running at port:${port}`));
